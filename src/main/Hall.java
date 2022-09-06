@@ -194,18 +194,29 @@ public class Hall extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Hall frame = new Hall(null);
+					Hall frame = new Hall(temp);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
-	public Hall () {}
 	
-	public Hall(JComponent contentPane2) throws Exception {
-		settingTable(contentPane2);
+	public Hall() {
+		int temp=0;
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Hall frame = new Hall(temp);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public Hall(int temp) throws Exception {
+		settingTable();
 
 		
 		tc = new House();
@@ -249,7 +260,7 @@ public class Hall extends JFrame {
 }
 	
 	public void tableSet(JComponent contentPane2) throws Exception {
-		settingTable(contentPane2);
+		settingTable();
 
 		
 		tc = new House();
@@ -1633,12 +1644,11 @@ public class Hall extends JFrame {
 
 	}
 	
-	private void settingTable(JComponent contentPane2) {
-		System.out.println(contentPane2==null);
-//		setBounds(100, 100, 1300, 730); // 1284 686 // 642 343
-//		setVisible(true);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setResizable(false);
+	private void settingTable() {
+		setBounds(100, 100, 1300, 730); // 1284 686 // 642 343
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		
 		
 		contentPane = new JLabel();
@@ -1647,13 +1657,7 @@ public class Hall extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setVisible(true);
 		contentPane.setLayout(null);
-		if(contentPane2 == null) {
-			setContentPane(contentPane);
-			System.out.println("실패");
-		}else {
-			contentPane2.add(contentPane);
-			System.out.println("성공");
-		}
+		setContentPane(contentPane);
 		
 		
 		dealerScoreBoard = new JLabel();
